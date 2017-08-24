@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Securities by Error{% endblock %}
+
+{% block body_content %}
+<h1>{{ error_code }}</h1>
+<ul>
+    {% for security in securities %}
+    <li>{{ security }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

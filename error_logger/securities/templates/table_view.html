@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% load render_table from django_tables2 %}
+
+{% block title %}Security Error Table View{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet"
+      href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
+{% endblock %}
+
+{% block body_content %}
+<div>
+    <h1>Search by Security</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ securities_form.as_p }}
+        <input type="submit">
+    </form>
+</div>
+<div>
+    <h1>Search by Error</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ errors_form.as_p }}
+        <input type="submit">
+    </form>
+</div>
+<div>
+    <h1>Errors by Security</h1>
+    {% render_table table %}
+</div>
+{% endblock %}
+
+
+{% block extra_js %}
+{{ securities_form.media }}
+{{ errors_form.media }}
+{% endblock %}
